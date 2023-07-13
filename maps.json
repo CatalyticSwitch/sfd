@@ -1,0 +1,14 @@
+let mapsFetch = await fetch('https://pastebin.com/raw/An1rJijs')
+let maps = await mapsFetch.json()
+
+function getCountry() {
+    let src = document.querySelector('iframe.geo').getAttribute('src')
+
+    for (let i = 0; i < maps.length; i++) {
+        if (maps[i]['embed'] == src) {
+            return maps[i]['title']
+        }
+    } 
+}
+
+console.log(getCountry())
